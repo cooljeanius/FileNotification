@@ -1,5 +1,8 @@
-//
-// Prefix header for all source files of the 'FileNotification' target in the 'FileNotification' project.
-//
+/*
+ * Prefix header for all source files of the 'FileNotification' target in the
+ * 'FileNotification' project.
+ */
 
 #include <Carbon/Carbon.h>
+
+/* EOF */

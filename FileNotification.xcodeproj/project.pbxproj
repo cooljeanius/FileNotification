@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 45;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
 		8D0C4E8E0486CD37000505A6 /* main.nib in Resources */ = {isa = PBXBuildFile; fileRef = 02345980000FD03B11CA0E72 /* main.nib */; };
 		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		A558DE4519020C4A002696E8 /* ReadMe.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A558DE4419020C4A002696E8 /* ReadMe.rtf */; };
+		A558DE4719020C50002696E8 /* version.plist in Resources */ = {isa = PBXBuildFile; fileRef = A558DE4619020C50002696E8 /* version.plist */; };
 		E367ED1505B5F56A00529002 /* SampleUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = E367ED1305B5F56A00529002 /* SampleUtils.c */; };
 		E367ED1605B5F56A00529002 /* Main.c in Sources */ = {isa = PBXBuildFile; fileRef = E367ED1405B5F56A00529002 /* Main.c */; };
 		E367EF6E05B600AE00529002 /* Main.h in Headers */ = {isa = PBXBuildFile; fileRef = E367EF6D05B600AE00529002 /* Main.h */; };
@@ -25,7 +27,9 @@
 		4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		4A9504CAFFE6A41611CA0CBA /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		8D0C4E960486CD37000505A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D0C4E970486CD37000505A6 /* FileNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D0C4E970486CD37000505A6 /* FileNotification.profile */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileNotification.profile; sourceTree = BUILT_PRODUCTS_DIR; };
+		A558DE4419020C4A002696E8 /* ReadMe.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
+		A558DE4619020C50002696E8 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = version.plist; sourceTree = "<group>"; };
 		E367ED1305B5F56A00529002 /* SampleUtils.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = SampleUtils.c; sourceTree = "<group>"; };
 		E367ED1405B5F56A00529002 /* Main.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = Main.c; sourceTree = "<group>"; };
 		E367EF6D05B600AE00529002 /* Main.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Main.h; sourceTree = "<group>"; };
@@ -47,7 +51,7 @@
 		195DF8CFFE9D517E11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D0C4E970486CD37000505A6 /* FileNotification.app */,
+				8D0C4E970486CD37000505A6 /* FileNotification.profile */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,7 +81,9 @@
 		20286C2CFDCF999611CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A558DE4419020C4A002696E8 /* ReadMe.rtf */,
 				8D0C4E960486CD37000505A6 /* Info.plist */,
+				A558DE4619020C50002696E8 /* version.plist */,
 				E3B5F66905DAAF44006D8031 /* kqueue.pdf */,
 				0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */,
 				02345980000FD03B11CA0E72 /* main.nib */,
@@ -114,6 +120,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 182A8C91089FE8F0007E28E8 /* Build configuration list for PBXNativeTarget "FileNotification" */;
 			buildPhases = (
+				A5A94C1A1902AF73005B7143 /* ShellScript */,
 				8D0C4E8A0486CD37000505A6 /* Headers */,
 				8D0C4E8C0486CD37000505A6 /* Resources */,
 				8D0C4E8F0486CD37000505A6 /* Sources */,
@@ -127,7 +134,7 @@
 			name = FileNotification;
 			productInstallPath = "$(HOME)/Applications";
 			productName = FileNotification;
-			productReference = 8D0C4E970486CD37000505A6 /* FileNotification.app */;
+			productReference = 8D0C4E970486CD37000505A6 /* FileNotification.profile */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -136,7 +143,7 @@
 		20286C28FDCF999611CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 182A8C95089FE8F0007E28E8 /* Build configuration list for PBXProject "FileNotification" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -162,6 +169,8 @@
 				8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */,
 				8D0C4E8E0486CD37000505A6 /* main.nib in Resources */,
 				E3B5F66A05DAAF44006D8031 /* kqueue.pdf in Resources */,
+				A558DE4519020C4A002696E8 /* ReadMe.rtf in Resources */,
+				A558DE4719020C50002696E8 /* version.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +185,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXRezBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A5A94C1A1902AF73005B7143 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nenv | uniq | sort | uniq\n\nexit 0\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D0C4E8F0486CD37000505A6 /* Sources */ = {
@@ -209,7 +234,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		182A8C92089FE8F0007E28E8 /* Development */ = {
+		182A8C92089FE8F0007E28E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
@@ -240,12 +265,12 @@
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
 				);
-				WRAPPER_EXTENSION = app;
+				WRAPPER_EXTENSION = debug;
 				ZERO_LINK = NO;
 			};
-			name = Development;
+			name = Debug;
 		};
-		182A8C93089FE8F0007E28E8 /* Deployment */ = {
+		182A8C93089FE8F0007E28E8 /* Normal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
@@ -276,79 +301,282 @@
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
-			name = Deployment;
+			name = Normal;
 		};
-		182A8C94089FE8F0007E28E8 /* Default */ = {
+		182A8C96089FE8F0007E28E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				BUILD_VARIANTS = (
+					normal,
+					debug,
+				);
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				LD_GENERATE_MAP_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = (
+					"-g3",
+					"-ggdb3",
+				);
+				PREBINDING = NO;
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = macosx10.4;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = "non-global";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+				);
+			};
+			name = Debug;
+		};
+		182A8C97089FE8F0007E28E8 /* Normal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_DEBUGGING_SYMBOLS = used;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_MODEL_PPC64 = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_VERSION = 4.0;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				LD_GENERATE_MAP_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				PREBINDING = NO;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = macosx10.4;
+				SEPARATE_STRIP = YES;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Normal;
+		};
+		A5A94BF21902AB94005B7143 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				BUILD_VARIANTS = (
+					normal,
+					profile,
+				);
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = stabs;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_FEEDBACK_DIRECTED_OPTIMIZATION = UseProfile;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_MODEL_PPC64 = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = 4.0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				GENERATE_PROFILING_CODE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/Developer/usr/lib/gcc/i686-apple-darwin10/4.0.1/include",
+					"/Developer/usr/lib/gcc/powerpc-apple-darwin10/4.0.1/include",
+				);
+				LD_GENERATE_MAP_FILE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"/Developer/usr/lib/gcc/i686-apple-darwin10/4.0.1",
+					"/Developer/usr/lib/gcc/powerpc-apple-darwin10/4.0.1",
+					"/Developer/usr/lib/gcc/i686-apple-darwin10/4.0.1/x86_64",
+					"/Developer/usr/lib/gcc/powerpc-apple-darwin10/4.0.1/ppc64",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=macosx10.4][arch=i386]" = "/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1";
+				"LIBRARY_SEARCH_PATHS[sdk=macosx10.4][arch=ppc64]" = (
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.0.1",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.0.1/ppc64",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=macosx10.4][arch=ppc]" = "/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.0.1";
+				"LIBRARY_SEARCH_PATHS[sdk=macosx10.4][arch=x86_64]" = (
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1/x86_64",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_LDFLAGS = "-lgcov";
+				"OTHER_LDFLAGS[sdk=macosx10.4][arch=i386]" = (
+					"-lgcov",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1/libgcov.a",
+				);
+				"OTHER_LDFLAGS[sdk=macosx10.4][arch=ppc64]" = (
+					"-lgcov",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.0.1/ppc64/libgcov.a",
+				);
+				"OTHER_LDFLAGS[sdk=macosx10.4][arch=ppc]" = (
+					"-lgcov",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.0.1/libgcov.a",
+				);
+				"OTHER_LDFLAGS[sdk=macosx10.4][arch=x86_64]" = (
+					"-lgcov",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1/x86_64/libgcov.a",
+				);
+				PREBINDING = NO;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = macosx10.4;
+				STRIP_STYLE = debugging;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+				);
+			};
+			name = Profile;
+		};
+		A5A94BF31902AB94005B7143 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_EXCEPTIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
 				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FileNotification_Prefix.pch;
+				GCC_VERSION = 4.0;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"/Developer/usr/lib/gcc/i686-apple-darwin10/4.0.1",
+					"/Developer/usr/lib/gcc/powerpc-apple-darwin10/4.0.1",
+					"/Developer/usr/lib/gcc/i686-apple-darwin10/4.0.1/x86_64",
+					"/Developer/usr/lib/gcc/powerpc-apple-darwin10/4.0.1/ppc64",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=macosx10.4][arch=i386]" = (
+					"/Developer/usr/lib/gcc/i686-apple-darwin10/4.0.1",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=macosx10.4][arch=ppc64]" = (
+					"/Developer/usr/lib/gcc/powerpc-apple-darwin10/4.0.1",
+					"/Developer/usr/lib/gcc/powerpc-apple-darwin10/4.0.1/ppc64",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.0.1",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.0.1/ppc64",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=macosx10.4][arch=ppc]" = (
+					"/Developer/usr/lib/gcc/powerpc-apple-darwin10/4.0.1",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.0.1",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=macosx10.4][arch=x86_64]" = (
+					"/Developer/usr/lib/gcc/i686-apple-darwin10/4.0.1",
+					"/Developer/usr/lib/gcc/i686-apple-darwin10/4.0.1/x86_64",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1/x86_64",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=macosx10.6][arch=ppc]" = (
+					"/Developer/usr/lib/gcc/powerpc-apple-darwin10/4.0.1",
+					"/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.0.1",
+				);
 				LIBRARY_STYLE = Static;
+				LLVM_LTO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lgcov",
+					"-lc",
+					"-lgcc",
+				);
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = FileNotification;
+				SDKROOT = macosx10.6;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
 				);
-				WRAPPER_EXTENSION = app;
+				WRAPPER_EXTENSION = profile;
+				ZERO_LINK = NO;
 			};
-			name = Default;
-		};
-		182A8C96089FE8F0007E28E8 /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
-			};
-			name = Development;
-		};
-		182A8C97089FE8F0007E28E8 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
-			};
-			name = Deployment;
-		};
-		182A8C98089FE8F0007E28E8 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
-			};
-			name = Default;
+			name = Profile;
 		};
 /* End XCBuildConfiguration section */
 
@@ -356,22 +584,22 @@
 		182A8C91089FE8F0007E28E8 /* Build configuration list for PBXNativeTarget "FileNotification" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				182A8C92089FE8F0007E28E8 /* Development */,
-				182A8C93089FE8F0007E28E8 /* Deployment */,
-				182A8C94089FE8F0007E28E8 /* Default */,
+				182A8C92089FE8F0007E28E8 /* Debug */,
+				A5A94BF31902AB94005B7143 /* Profile */,
+				182A8C93089FE8F0007E28E8 /* Normal */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Normal;
 		};
 		182A8C95089FE8F0007E28E8 /* Build configuration list for PBXProject "FileNotification" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				182A8C96089FE8F0007E28E8 /* Development */,
-				182A8C97089FE8F0007E28E8 /* Deployment */,
-				182A8C98089FE8F0007E28E8 /* Default */,
+				182A8C96089FE8F0007E28E8 /* Debug */,
+				A5A94BF21902AB94005B7143 /* Profile */,
+				182A8C97089FE8F0007E28E8 /* Normal */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Normal;
 		};
 /* End XCConfigurationList section */
 	};

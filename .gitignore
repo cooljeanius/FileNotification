@@ -1,2 +1,11 @@
+*DS_Store*
+build/*
+built/*
+*.sit
+*.build
+*.app
+*.debug
+*.profile
+*.dSYM
 *.pbxuser
 *.perspectivev3
