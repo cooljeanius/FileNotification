@@ -3,6 +3,14 @@
  * 'FileNotification' project.
  */
 
-#include <Carbon/Carbon.h>
+#ifndef __LP64__
+	#include <Carbon/Carbon.h>
+#else
+	#include <stdio.h>
+	#include <CoreFoundation/CoreFoundation.h>
+	#ifndef SIGDIGLEN
+		#define SIGDIGLEN 36 /* value for TARGET_CPU_PPC || TARGET_CPU_X86 */
+	#endif /* !SIGDIGLEN */
+#endif /* !__LP64__ */
 
 /* EOF */

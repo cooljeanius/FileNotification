@@ -48,8 +48,11 @@
  *	Copyright © 2004 Apple Computer, Inc., All Rights Reserved
  */
 
-
-#include <Carbon/Carbon.h>
+#ifndef __LP64__
+# include <Carbon/Carbon.h>
+#else
+# include <CoreFoundation/CoreFoundation.h>
+#endif /* !__LP64__ */
 #include "Main.h"
 
 
@@ -79,7 +82,7 @@ CFStringRef	GetControlCFString(WindowRef window, OSType signature, SInt32 id)
 
 	err	= GetControlData(control, (ControlPartCode)0,
 						 kControlStaticTextCFStringTag, sizeof(CFStringRef),
-						 (Ptr)&cfString, &dataSize);
+						 (Ptr)&cfString, (Size *)&dataSize);
 	if (err != noErr) {
 		goto Bail;
 	}
@@ -125,7 +128,8 @@ char *GetControlCString(WindowRef window, OSType signature, SInt32 id,
 	}
 
 	(void)GetControlData(control, (ControlPartCode)0,
-						 kControlStaticTextTextTag, 255, my_cString, &dataSize);
+						 kControlStaticTextTextTag, (Size)255, my_cString,
+						 (Size *)&dataSize);
 	my_cString[dataSize]	= 0;
 
 Bail:
@@ -165,7 +169,7 @@ void GetControlPString(WindowRef window, OSType signature, SInt32 id,
 	}
 
 	(void)GetControlData(control, (ControlPartCode)0, kControlStaticTextTextTag,
-						 255, (pString + 1), &dataSize);
+						 (Size)255, (pString + 1), (Size *)&dataSize);
 	pString[0] = (unsigned char)dataSize;
 
 Bail:
@@ -183,7 +187,7 @@ void SetControlPString(WindowRef window, OSType signature, SInt32 id,
 	}
 
 	(void)SetControlData(control, (ControlPartCode)0, kControlStaticTextTextTag,
-						 pString[0], (pString + 1));
+						 (Size)pString[0], (pString + 1));
 	Draw1Control(control);
 
 Bail:
@@ -244,7 +248,7 @@ void SendWindowCloseEvent(WindowRef window)
 	(void)CreateEvent(NULL, kEventClassWindow, kEventWindowClose,
 					  GetCurrentEventTime(), kEventAttributeUserEvent, &event);
 	(void)SetEventParameter(event, kEventParamDirectObject, typeWindowRef,
-							sizeof(window), &window);
+							(UInt32)sizeof(window), (const void *)&window);
 	(void)SendEventToWindow(event, window);
 	(void)ReleaseEvent(event);
 }
@@ -259,10 +263,10 @@ void SendCommandProcessEvent(UInt32 commandID)
 	BlockZero(&command, sizeof(command));
 	command.commandID = commandID;
 
-	(void)CreateEvent(NULL,  kEventClassCommand, kEventCommandProcess,
+	(void)CreateEvent(NULL, kEventClassCommand, kEventCommandProcess,
 					  GetCurrentEventTime(), kEventAttributeUserEvent, &event);
-	(void)SetEventParameter(event, kEventParamDirectObject, typeHICommand,
-							sizeof(command), &command);
+	(void)SetEventParameter(event,kEventParamDirectObject, typeHICommand,
+							(UInt32)sizeof(command), (const void *)&command);
 	(void)SendEventToApplication(event);
 	(void)ReleaseEvent(event);
 }

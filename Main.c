@@ -53,7 +53,25 @@
  *	Copyright © 2004 Apple Computer, Inc., All Rights Reserved
  */
 
+#ifndef SIGDIGLEN
+# define SIGDIGLEN 36 /* what it is for TARGET_CPU_PPC || TARGET_CPU_X86 */
+#endif /* !SIGDIGLEN */
+#if defined(__LP64__) && !defined(__LP64_SAVED__)
+# define __LP64_SAVED__ 1
+# undef __LP64__
+# ifdef __MACHINEEXCEPTIONS__
+#  undef __MACHINEEXCEPTIONS__
+# endif /* __MACHINEEXCEPTIONS__ */
+# define __MACHINEEXCEPTIONS__ 1
+# if !defined(AreaID) && !defined(__MAIN_H__)
+/* Some basic declarations used throughout the kernel */
+typedef struct OpaqueAreaID* AreaID;
+# endif /* !AreaID && !__MAIN_H__ */
+#endif /* __LP64__ && !__LP64_SAVED__ */
 #include <Carbon/Carbon.h>
+#if defined(__LP64_SAVED__) && !defined(__LP64__)
+# define __LP64__ 1
+#endif /* __LP64_SAVED__ && !__LP64__ */
 #include "Main.h"
 
 #include <sys/event.h>
@@ -142,7 +160,7 @@ static OSErr InitializeApplication(void)
 	}
 
 	InstallApplicationEventHandler(NewEventHandlerUPP(AppEventEventHandlerProc),
-								   GetEventTypeCount(sApplicationEvents),
+								   (UInt32)GetEventTypeCount(sApplicationEvents),
 								   sApplicationEvents, 0, NULL);
 
 Bail:
@@ -188,7 +206,7 @@ static void DisplaySimpleWindow(void)
 		/* MPWindowEventHandlerProc handles events for this window */
 	}
 	err = InstallWindowEventHandler(window, mpWindowEventHandlerUPP,
-									GetEventTypeCount(windowEvents),
+									(UInt32)GetEventTypeCount(windowEvents),
 									windowEvents, window, NULL);
 
 	/* dummy condition to use value stored to 'err': */
@@ -218,16 +236,23 @@ static void DisplaySimpleWindow(void)
 					   (Boolean)kDontCreateFolder, &fsRef);
 	/* Watch the Users folder */
 	err1 = FSRefMakePath(&fsRef, (UInt8 *)path, MAXPATHLEN);
-	if ((err == noErr) && (err1 == noErr))
+	if ((err == noErr) && (err1 == noErr)) {
 		SetControlCString(window, 'STxt', ++i, path);
+	}
 
 	mpTaskInfo = (MyMPTaskInfo*)NewPtrClear(sizeof(MyMPTaskInfo));
+#if defined(SRefCon)
+	/* judging by the prototype, the second argument should be of type "long",
+	 * but the compiler warnings say otherwise (depends on sdk): */
+	SetWRefCon(window, (SRefCon)mpTaskInfo);
+#else
 	SetWRefCon(window, (long)mpTaskInfo);
+#endif /* SRefCon */
 	for ((mpTaskInfo->count = 0); (mpTaskInfo->count < kMaxFoldersToWatch);
 		 mpTaskInfo->count++) {
 		GetControlCString(window, 'STxt', mpTaskInfo->count,
 						  mpTaskInfo->path[mpTaskInfo->count]);
-		/* This code pretty much just reads back the strings we set above */
+		/* This code pretty much just reads back the strings we set above: */
 		if (mpTaskInfo->path[mpTaskInfo->count][0] == '\0') {
 			break;
 		}
@@ -278,7 +303,8 @@ static pascal OSStatus AppEventEventHandlerProc(EventHandlerCallRef inCallRef,
 	switch (eventClass) {
 		case kEventClassCommand:
 			GetEventParameter(inEvent, kEventParamDirectObject, typeHICommand,
-							  NULL, sizeof(HICommand), NULL, &command);
+							  NULL, (UInt32)sizeof(HICommand),
+							  NULL, &command);
 			if (eventKind == kEventCommandProcess) {
 				if (command.commandID == kHICommandNew) {
 					DisplaySimpleWindow();
@@ -324,17 +350,19 @@ static pascal OSStatus MPWindowEventHandlerProc(EventHandlerCallRef inCallRef,
 				/* When we receive the kEventKQueue event, we update the date
 				 * control associated with the path we are watching. */
 				GetEventParameter(inEvent, kEventParamDirectObject, typeKEvent,
-								  NULL, sizeof(struct kevent), NULL, &kev);
+								  NULL, (UInt32)sizeof(struct kevent),
+								  NULL, &kev);
 				GetEventParameter(inEvent, kEventParamControlRef,
-								  typeControlRef, NULL, sizeof(ControlRef),
+								  typeControlRef, NULL,
+								  (UInt32)sizeof(ControlRef),
 								  NULL, &dateControl);
 
 				GetDateTime(&secs);
-				lSecs = secs;
+				lSecs = (LongDateTime)secs;
 				LongSecondsToDate(&lSecs, &lDate);
 				(void)SetControlData(dateControl, (ControlPartCode)0,
-									 kControlClockLongDateTag, sizeof(lDate),
-									 &lDate);
+									 kControlClockLongDateTag,
+									 (Size)sizeof(lDate), &lDate);
 				Draw1Control(dateControl);
 
 				/* Display the kevent information: */
@@ -345,7 +373,8 @@ static pascal OSStatus MPWindowEventHandlerProc(EventHandlerCallRef inCallRef,
 		case kEventClassWindow:
 			if (eventKind == kEventWindowClose) {
 				GetEventParameter(inEvent, kEventParamDirectObject,
-								  typeWindowRef, NULL, sizeof(WindowRef),
+								  typeWindowRef, NULL,
+								  (UInt32)sizeof(WindowRef),
 								  NULL, &window);
 				/* Flag the thread to terminate (thread checks at least every
 				 * 30 seconds in this sample): */
@@ -355,7 +384,8 @@ static pascal OSStatus MPWindowEventHandlerProc(EventHandlerCallRef inCallRef,
 
 		case kEventClassCommand:
 			GetEventParameter(inEvent, kEventParamDirectObject, typeHICommand,
-							  NULL, sizeof(HICommand), NULL, &command);
+							  NULL, (UInt32)sizeof(HICommand),
+							  NULL, &command);
 			if (eventKind == kEventCommandProcess) {
 				if (command.commandID == 'Help') {
 					/* Our 'Help' command, just have LaunchServices open the
@@ -545,19 +575,21 @@ OSStatus PostKQueueEvent(struct kevent *kevp)
 	}
 
 	err = SetEventParameter(event, kEventParamDirectObject, typeKEvent,
-							sizeof(struct kevent), kevp); /* Send the kevent */
+							(UInt32)sizeof(struct kevent),
+							kevp); /* Send the kevent */
 	if (err != noErr) {
 		goto Bail;
 	}
 	/* Target the date control: */
 	err = SetEventParameter(event, kEventParamPostTarget, typeEventTargetRef,
-							sizeof(void*), &mpControl->eventTarget);
+							(UInt32)sizeof(void*), &mpControl->eventTarget);
 	if (err != noErr) {
 		goto Bail;
 	}
 	/* ControlRef to update: */
 	err = SetEventParameter(event, kEventParamControlRef, typeControlRef,
-							sizeof(ControlRef), &mpControl->dateControl);
+							(UInt32)sizeof(ControlRef),
+							&mpControl->dateControl);
 	if (err != noErr) {
 		goto Bail;
 	}

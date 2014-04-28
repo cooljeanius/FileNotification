@@ -48,13 +48,42 @@
  *	Copyright © 2003 Apple Computer, Inc., All Rights Reserved
  */
 
-#ifndef __MAIN__
-#define __MAIN__
+#ifndef __MAIN_H__
+#define __MAIN_H__ 1
 
+#if (defined(__x86_64) || defined(__x86_64__)) && !defined(TARGET_CPU_X86)
+# define TARGET_CPU_X86 64
+#endif /* (__x86_64 || __x86_64__) && !TARGET_CPU_X86 */
+#if (defined(__ppc64) || defined(__ppc64__)) && !defined(TARGET_CPU_PPC)
+# define TARGET_CPU_PPC 64
+#endif /* (__ppc64 || __ppc64__) && !TARGET_CPU_PPC */
+#ifndef SIGDIGLEN
+# define SIGDIGLEN 36 /* what it is for TARGET_CPU_PPC || TARGET_CPU_X86 */
+#endif /* !SIGDIGLEN */
+#if defined(__LP64__) && !defined(__LP64_SAVED__)
+# define __LP64_SAVED__ 1
+# undef __LP64__
+# ifdef __MACHINEEXCEPTIONS__
+#  undef __MACHINEEXCEPTIONS__
+# endif /* __MACHINEEXCEPTIONS__ */
+# define __MACHINEEXCEPTIONS__ 1
+# ifndef AreaID
+/* Some basic declarations used throughout the kernel */
+typedef struct OpaqueAreaID* AreaID;
+# endif /* !AreaID */
+#endif /* __LP64__ && !__LP64_SAVED__ */
 #include <Carbon/Carbon.h>
+#if defined(__LP64_SAVED__) && !defined(__LP64__)
+# define __LP64__ 1
+#endif /* __LP64_SAVED__ && !__LP64__ */
+#ifdef __LP64__
+# include <CoreFoundation/CoreFoundation.h>
+#endif /* __LP64__ */
 #include <sys/param.h>
 
-#pragma options align=mac68k
+#ifndef __LP64__
+# pragma options align=mac68k
+#endif /* !__LP64__ */
 
 #define kMaxFoldersToWatch	10
 
@@ -111,7 +140,9 @@ void CFStringToStr255(CFStringRef input, StringPtr output);
 void SendWindowCloseEvent(WindowRef window);
 void SendCommandProcessEvent(UInt32 commandID);
 
-#pragma options align=reset
-#endif /* !__MAIN__ */
+#ifndef __LP64__
+# pragma options align=reset
+#endif /* !__LP64__ */
+#endif /* !__MAIN_H__ */
 
 /* EOF */

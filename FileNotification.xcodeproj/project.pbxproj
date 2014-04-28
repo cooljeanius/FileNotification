@@ -13,6 +13,10 @@
 		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
 		A558DE4519020C4A002696E8 /* ReadMe.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A558DE4419020C4A002696E8 /* ReadMe.rtf */; };
 		A558DE4719020C50002696E8 /* version.plist in Resources */ = {isa = PBXBuildFile; fileRef = A558DE4619020C50002696E8 /* version.plist */; };
+		A5C41661190E99E000279181 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = A5C41660190E99E000279181 /* ReadMe.txt */; };
+		A5C4171A190EA56500279181 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C41719190EA56500279181 /* CoreFoundation.framework */; };
+		A5C41A1B190EB05D00279181 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504CAFFE6A41611CA0CBA /* CoreServices.framework */; };
+		A5C41A1C190EB05D00279181 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */; };
 		E367ED1505B5F56A00529002 /* SampleUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = E367ED1305B5F56A00529002 /* SampleUtils.c */; };
 		E367ED1605B5F56A00529002 /* Main.c in Sources */ = {isa = PBXBuildFile; fileRef = E367ED1405B5F56A00529002 /* Main.c */; };
 		E367EF6E05B600AE00529002 /* Main.h in Headers */ = {isa = PBXBuildFile; fileRef = E367EF6D05B600AE00529002 /* Main.h */; };
@@ -27,9 +31,11 @@
 		4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		4A9504CAFFE6A41611CA0CBA /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		8D0C4E960486CD37000505A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D0C4E970486CD37000505A6 /* FileNotification.profile */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileNotification.profile; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D0C4E970486CD37000505A6 /* FileNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A558DE4419020C4A002696E8 /* ReadMe.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
 		A558DE4619020C50002696E8 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = version.plist; sourceTree = "<group>"; };
+		A5C41660190E99E000279181 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		A5C41719190EA56500279181 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		E367ED1305B5F56A00529002 /* SampleUtils.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = SampleUtils.c; sourceTree = "<group>"; };
 		E367ED1405B5F56A00529002 /* Main.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = Main.c; sourceTree = "<group>"; };
 		E367EF6D05B600AE00529002 /* Main.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Main.h; sourceTree = "<group>"; };
@@ -41,7 +47,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5C41A1B190EB05D00279181 /* CoreServices.framework in Frameworks */,
+				A5C41A1C190EB05D00279181 /* ApplicationServices.framework in Frameworks */,
 				8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */,
+				A5C4171A190EA56500279181 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +60,7 @@
 		195DF8CFFE9D517E11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D0C4E970486CD37000505A6 /* FileNotification.profile */,
+				8D0C4E970486CD37000505A6 /* FileNotification.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				A558DE4419020C4A002696E8 /* ReadMe.rtf */,
+				A5C41660190E99E000279181 /* ReadMe.txt */,
 				8D0C4E960486CD37000505A6 /* Info.plist */,
 				A558DE4619020C50002696E8 /* version.plist */,
 				E3B5F66905DAAF44006D8031 /* kqueue.pdf */,
@@ -95,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				20286C33FDCF999611CA2CEA /* Carbon.framework */,
+				A5C41719190EA56500279181 /* CoreFoundation.framework */,
 				4A9504CAFFE6A41611CA0CBA /* CoreServices.framework */,
 				4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */,
 			);
@@ -134,7 +145,7 @@
 			name = FileNotification;
 			productInstallPath = "$(HOME)/Applications";
 			productName = FileNotification;
-			productReference = 8D0C4E970486CD37000505A6 /* FileNotification.profile */;
+			productReference = 8D0C4E970486CD37000505A6 /* FileNotification.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -171,6 +182,7 @@
 				E3B5F66A05DAAF44006D8031 /* kqueue.pdf in Resources */,
 				A558DE4519020C4A002696E8 /* ReadMe.rtf in Resources */,
 				A558DE4719020C50002696E8 /* version.plist in Resources */,
+				A5C41661190E99E000279181 /* ReadMe.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +330,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DEBUGGING_SYMBOLS = full;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
+				"GCC_MODEL_PPC64[arch=ppc64]" = YES;
+				"GCC_MODEL_TUNING[arch=ppc64]" = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = 4.0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -334,7 +347,7 @@
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				"GCC_WARN_PROTOTYPE_CONVERSION[arch=x86_64]" = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
@@ -351,6 +364,7 @@
 				OTHER_CFLAGS = (
 					"-g3",
 					"-ggdb3",
+					"-m32",
 				);
 				PREBINDING = NO;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
@@ -378,8 +392,9 @@
 				GCC_DEBUGGING_SYMBOLS = used;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
-				GCC_MODEL_PPC64 = YES;
+				"GCC_MODEL_PPC64[arch=ppc64]" = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -419,8 +434,8 @@
 				GCC_FEEDBACK_DIRECTED_OPTIMIZATION = UseProfile;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
-				GCC_MODEL_PPC64 = YES;
-				GCC_MODEL_TUNING = G5;
+				"GCC_MODEL_PPC64[arch=ppc64]" = YES;
+				"GCC_MODEL_TUNING[arch=ppc64]" = G5;
 				GCC_VERSION = 4.0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
@@ -518,9 +533,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FileNotification_Prefix.pch;
 				GCC_VERSION = 4.0;
+				"GCC_VERSION[sdk=macosx10.6][arch=i386]" = com.apple.compilers.llvm.clang.1_0;
+				"GCC_VERSION[sdk=macosx10.6][arch=x86_64]" = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_PROTOTYPE_CONVERSION = NO;
+				"GCC_WARN_PROTOTYPE_CONVERSION[sdk=macosx10.6][arch=i386]" = YES;
+				"GCC_WARN_PROTOTYPE_CONVERSION[sdk=macosx10.6][arch=x86_64]" = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
