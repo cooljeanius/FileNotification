@@ -27,8 +27,8 @@ When should the kqueue mechanism be used?
 
 This solution is ideal for watching drop boxes,
 or maintaining up-to-date status of a number of directories.
-For instance, if your application presents views similar to the Finder views,
-rather than polling for changes to each viewed directory,
+For instance, if your application presents views similar to the Finder
+views, rather than polling for changes to each viewed directory,
 you should consider a kqueue notification mechanism instead.
 
 There are limitations to be aware of:
@@ -42,6 +42,10 @@ you will NOT be notified of changes by other network users.
 However, SMB and AFP do support a "push" model of notifications.
 
 kqueues may not be supported by all file systems.
+
+The fsevents API is generally preferred on newer versions of OS X, 
+although kqueues may still be useful for portability, or in cases where
+finer granularity is needed. 
 
 More kqueue information:
 

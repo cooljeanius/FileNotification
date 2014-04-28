@@ -17,6 +17,8 @@
 		A5C4171A190EA56500279181 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C41719190EA56500279181 /* CoreFoundation.framework */; };
 		A5C41A1B190EB05D00279181 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504CAFFE6A41611CA0CBA /* CoreServices.framework */; };
 		A5C41A1C190EB05D00279181 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */; };
+		A5C41A75190ED9E400279181 /* brief-kqueue-example.c in Sources */ = {isa = PBXBuildFile; fileRef = A5C41A61190ED94400279181 /* brief-kqueue-example.c */; };
+		A5C41A77190ED9F400279181 /* brief-kqueue-example.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C41A60190ED94400279181 /* brief-kqueue-example.h */; };
 		E367ED1505B5F56A00529002 /* SampleUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = E367ED1305B5F56A00529002 /* SampleUtils.c */; };
 		E367ED1605B5F56A00529002 /* Main.c in Sources */ = {isa = PBXBuildFile; fileRef = E367ED1405B5F56A00529002 /* Main.c */; };
 		E367EF6E05B600AE00529002 /* Main.h in Headers */ = {isa = PBXBuildFile; fileRef = E367EF6D05B600AE00529002 /* Main.h */; };
@@ -31,11 +33,14 @@
 		4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		4A9504CAFFE6A41611CA0CBA /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		8D0C4E960486CD37000505A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D0C4E970486CD37000505A6 /* FileNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D0C4E970486CD37000505A6 /* FileNotification.debug */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileNotification.debug; sourceTree = BUILT_PRODUCTS_DIR; };
 		A558DE4419020C4A002696E8 /* ReadMe.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
 		A558DE4619020C50002696E8 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = version.plist; sourceTree = "<group>"; };
 		A5C41660190E99E000279181 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		A5C41719190EA56500279181 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		A5C41A60190ED94400279181 /* brief-kqueue-example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "brief-kqueue-example.h"; sourceTree = "<group>"; };
+		A5C41A61190ED94400279181 /* brief-kqueue-example.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "brief-kqueue-example.c"; sourceTree = "<group>"; };
+		A5C41A66190ED96300279181 /* brief-kqueue-example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "brief-kqueue-example"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E367ED1305B5F56A00529002 /* SampleUtils.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = SampleUtils.c; sourceTree = "<group>"; };
 		E367ED1405B5F56A00529002 /* Main.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = Main.c; sourceTree = "<group>"; };
 		E367EF6D05B600AE00529002 /* Main.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Main.h; sourceTree = "<group>"; };
@@ -54,13 +59,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5C41A64190ED96300279181 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		195DF8CFFE9D517E11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D0C4E970486CD37000505A6 /* FileNotification.app */,
+				8D0C4E970486CD37000505A6 /* FileNotification.debug */,
+				A5C41A66190ED96300279181 /* brief-kqueue-example */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +96,8 @@
 				E367ED1305B5F56A00529002 /* SampleUtils.c */,
 				E367EF6D05B600AE00529002 /* Main.h */,
 				32DBCF6D0370B57F00C91783 /* FileNotification_Prefix.pch */,
+				A5C41A60190ED94400279181 /* brief-kqueue-example.h */,
+				A5C41A61190ED94400279181 /* brief-kqueue-example.c */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -124,6 +139,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5C41A80190EDA3200279181 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C41A77190ED9F400279181 /* brief-kqueue-example.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -145,8 +168,25 @@
 			name = FileNotification;
 			productInstallPath = "$(HOME)/Applications";
 			productName = FileNotification;
-			productReference = 8D0C4E970486CD37000505A6 /* FileNotification.app */;
+			productReference = 8D0C4E970486CD37000505A6 /* FileNotification.debug */;
 			productType = "com.apple.product-type.application";
+		};
+		A5C41A65190ED96300279181 /* brief-kqueue-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5C41A74190ED96E00279181 /* Build configuration list for PBXNativeTarget "brief-kqueue-example" */;
+			buildPhases = (
+				A5C41A80190EDA3200279181 /* Headers */,
+				A5C41A63190ED96300279181 /* Sources */,
+				A5C41A64190ED96300279181 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "brief-kqueue-example";
+			productName = "brief-kqueue-example";
+			productReference = A5C41A66190ED96300279181 /* brief-kqueue-example */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
@@ -168,6 +208,7 @@
 			projectRoot = "";
 			targets = (
 				8D0C4E890486CD37000505A6 /* FileNotification */,
+				A5C41A65190ED96300279181 /* brief-kqueue-example */,
 			);
 		};
 /* End PBXProject section */
@@ -221,6 +262,14 @@
 			files = (
 				E367ED1505B5F56A00529002 /* SampleUtils.c in Sources */,
 				E367ED1605B5F56A00529002 /* Main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C41A63190ED96300279181 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C41A75190ED9E400279181 /* brief-kqueue-example.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +647,111 @@
 			};
 			name = Profile;
 		};
+		A5C41A68190ED96500279181 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					ppc,
+					ppc64,
+					i386,
+					x86_64,
+				);
+				"ARCHS[sdk=macosx10.6]" = (
+					ppc,
+					i386,
+					x86_64,
+				);
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				"GCC_VERSION[sdk=macosx10.5]" = "";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_PEDANTIC = YES;
+				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.5][arch=*]" = 10.5;
+				PREBINDING = NO;
+				PRODUCT_NAME = "brief-kqueue-example";
+				SDKROOT = macosx10.6;
+				"SDKROOT[arch=ppc64]" = macosx10.5;
+			};
+			name = Debug;
+		};
+		A5C41A69190ED96500279181 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					ppc,
+					ppc64,
+					i386,
+					x86_64,
+				);
+				"ARCHS[sdk=macosx10.6]" = (
+					ppc,
+					i386,
+					x86_64,
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				"GCC_VERSION[sdk=macosx10.5]" = "";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_PEDANTIC = YES;
+				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.5][arch=*]" = 10.5;
+				PREBINDING = NO;
+				PRODUCT_NAME = "brief-kqueue-example";
+				SDKROOT = macosx10.6;
+				"SDKROOT[arch=ppc64]" = macosx10.5;
+			};
+			name = Profile;
+		};
+		A5C41A6A190ED96500279181 /* Normal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					ppc,
+					ppc64,
+					i386,
+					x86_64,
+				);
+				"ARCHS[sdk=macosx10.6]" = (
+					ppc,
+					i386,
+					x86_64,
+				);
+				"GCC_ALTIVEC_EXTENSIONS[arch=ppc64]" = YES;
+				"GCC_ALTIVEC_EXTENSIONS[arch=ppc]" = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_EXCEPTIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_STRICT_ALIASING = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				"GCC_VERSION[sdk=macosx10.5]" = "";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_PEDANTIC = YES;
+				INSTALL_PATH = /usr/local/bin;
+				"LLVM_LTO[arch=i386]" = YES;
+				"LLVM_LTO[arch=x86_64]" = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.5][arch=*]" = 10.5;
+				PREBINDING = NO;
+				PRODUCT_NAME = "brief-kqueue-example";
+				SDKROOT = macosx10.6;
+				"SDKROOT[arch=ppc64]" = macosx10.5;
+			};
+			name = Normal;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -617,6 +771,16 @@
 				182A8C96089FE8F0007E28E8 /* Debug */,
 				A5A94BF21902AB94005B7143 /* Profile */,
 				182A8C97089FE8F0007E28E8 /* Normal */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Normal;
+		};
+		A5C41A74190ED96E00279181 /* Build configuration list for PBXNativeTarget "brief-kqueue-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C41A68190ED96500279181 /* Debug */,
+				A5C41A69190ED96500279181 /* Profile */,
+				A5C41A6A190ED96500279181 /* Normal */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Normal;

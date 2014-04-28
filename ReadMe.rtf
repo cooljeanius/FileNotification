@@ -15,37 +15,37 @@ and then block on the call to kevent. \
 \
 Looking at the sample source code: \
 Within
-\f1\fs20 DisplaySimpleWindow()
+\f1\fs20  DisplaySimpleWindow()
 \f0\fs26  we first initialize our
-\f1\fs20 MyMPTaskInfo
+\f1\fs20  MyMPTaskInfo
 \f0\fs26  structure \
 used to pass information into our Carbon MultiProcessing thread \
 (or "MP thread" for short, which will be the term used for it hereafter), \
 which may not be accessible or safe to initialize from our thread. \
 We then create the MP thread passing in the initialized
-\f1\fs20 MyMPTaskInfo
+\f1\fs20  MyMPTaskInfo
 \f0\fs26  \
 structure. \
 \
 Most of the interesting work is done in the small
-\f1\fs20 MyMPTask()
+\f1\fs20  MyMPTask()
 \f0\fs26  routine on \
 an MP thread. Here we define the events we are interested in watching, \
 open file descriptors to the directories we are watching, \
 and block on the call to
-\f1\fs20 kevent()
+\f1\fs20  kevent()
 \f0\fs26 . If any of the defined events occurs \
 to one of the file descriptors that we have opened, \
 the call to
-\f1\fs20 kevent()
+\f1\fs20  kevent()
 \f0\fs26  then unblocks, and we then post the \
 information back to the main event queue for display. \
 The routine
-\f1\fs20 PostKQueueEvent()
+\f1\fs20  PostKQueueEvent()
 \f0\fs26  is responsible for setting up our \
 custom CarbonEvent and posting it to the main event queue. \
 After the event is posted, we block on our call to
-\f1\fs20 kevent()
+\f1\fs20  kevent()
 \f0\fs26  again until \
 another event is received.\
 \
@@ -74,18 +74,21 @@ However, SMB and AFP do support a "push" model of notifications. \
 kqueues may not be supported by all file systems. \
 \
 The fsevents API is generally preferred on newer versions of OS X, \
-although kqueues may still be useful for portability. \
+although kqueues may still be useful for portability, or in cases where finer \
+granularity is needed. \
 \
 
 \b More kqueue information: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
 
-\b0 \
+\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
 
-\f2 Typing "
+\f2 \cf0 Typing "
 \f1\fs20 man 2 kqueue
 \f2\fs26 " in the Terminal will display the kqueue man page. \
 \
-Either click the "?" button from the FileNotification sample application to \
-read the enclosed "kqueue.pdf" file, or open the file manually, \
-for more in-depth information on kqueues.\
+Either click the "?" button from the FileNotification sample application \
+to read the enclosed "kqueue.pdf" file, or open the file manually, \
+for more in-depth information on kqueues. \
 }

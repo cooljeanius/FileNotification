@@ -9,3 +9,5 @@ built/*
 *.dSYM
 *.pbxuser
 *.perspectivev3
+*.log
+*.dat
