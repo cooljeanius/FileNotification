@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}
+\title{}
+%  Translation from RTF performed by UnRTF, version 0.21.9 
+% font table contains 0 fonts total
+% invalid font number 0
+
+
+\begin{document}
+\maketitle
+
+{\bf {\Large FileNotification Read Me}}{\Large {\large \par
+\par
+Kqueue notifications were introduced in Mac OS X 10.3 to provide a \par
+file notification API. The general recommended usage is \par
+to create a separate thread, open a file descriptor to the file system object, \par
+and then block on the call to kevent. \par
+\par
+Looking at the sample source code: \par
+Within% invalid font number 1
+\small{ DisplaySimpleWindow()% invalid font number 0
+{\large  we first initialize our% invalid font number 1
+\small{ MyMPTaskInfo% invalid font number 0
+{\large  structure \par
+used to pass information into our Carbon MultiProcessing thread \par
+(or "MP thread" for short, which will be the term used for it hereafter), \par
+which may not be accessible or safe to initialize from our thread. \par
+We then create the MP thread passing in the initialized% invalid font number 1
+\small{ MyMPTaskInfo% invalid font number 0
+{\large  \par
+structure. \par
+\par
+Most of the interesting work is done in the small% invalid font number 1
+\small{ MyMPTask()% invalid font number 0
+{\large  routine on \par
+an MP thread. Here we define the events we are interested in watching, \par
+open file descriptors to the directories we are watching, \par
+and block on the call to% invalid font number 1
+\small{ kevent()% invalid font number 0
+{\large . If any of the defined events occurs \par
+to one of the file descriptors that we have opened, \par
+the call to% invalid font number 1
+\small{ kevent()% invalid font number 0
+{\large  then unblocks, and we then post the \par
+information back to the main event queue for display. \par
+The routine% invalid font number 1
+\small{ PostKQueueEvent()% invalid font number 0
+{\large  is responsible for setting up our \par
+custom CarbonEvent and posting it to the main event queue. \par
+After the event is posted, we block on our call to% invalid font number 1
+\small{ kevent()% invalid font number 0
+{\large  again until \par
+another event is received.\par
+\par
+{\bf When should the kqueue mechanism be used?}\par
+\par
+This solution is ideal for watching drop boxes, \par
+or maintaining up-to-date status of a number of directories. \par
+For instance, if your application presents views similar to the Finder views, \par
+rather than polling for changes to each viewed directory, \par
+you should consider a kqueue notification mechanism instead. \par
+\par
+{\bf There are limitations to be aware of:}\par
+\par
+Because a file descriptor must be opened for each file and folder \par
+that is being watched it is not efficient or possible to use this mechanism \par
+to watch all changes occurring to an entire disk. \par
+\par
+If the folder that you are watching is on an NFS server, \par
+you will NOT be notified of changes by other network users. \par
+However, SMB and AFP do support a "push" model of notifications. \par
+\par
+kqueues may not be supported by all file systems. \par
+\par
+The fsevents API is generally preferred on newer versions of OS X, \par
+although kqueues may still be useful for portability, or in cases where finer \par
+granularity is needed. \par
+\par
+{\bf More kqueue information: \par
+}}}}}}}}}}}}}}}}}}}\par
+% invalid font number 2
+Typing "% invalid font number 1
+\small{man 2 kqueue% invalid font number 2
+{\large " in the Terminal will display the kqueue man page. \par
+\par
+Either click the "?" button from the FileNotification sample application \par
+to read the enclosed "kqueue.pdf" file, or open the file manually, \par
+for more in-depth information on kqueues. \par
+}}\end{document}
