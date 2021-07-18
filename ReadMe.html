@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!-- Translation from RTF performed by UnRTF, version 0.21.9 -->
+<!--font table contains 0 fonts total-->
+<!--invalid font number 0-->
+</head>
+<body><b><font size="5"><font color="#000000">FileNotification Read Me</font></font></b><font size="5"><font color="#000000"><span style="font-size:13pt"><br>
+<br>
+Kqueue notifications were introduced in Mac OS X 10.3 to provide a <br>
+file notification API. The general recommended usage is <br>
+to create a separate thread, open a file descriptor to the file system object, <br>
+and then block on the call to kevent. <br>
+<br>
+Looking at the sample source code: <br>
+Within<!--invalid font number 1-->
+<font size="2"> DisplaySimpleWindow()<!--invalid font number 0-->
+<span style="font-size:13pt"> we first initialize our<!--invalid font number 1-->
+<font size="2"> MyMPTaskInfo<!--invalid font number 0-->
+<span style="font-size:13pt"> structure <br>
+used to pass information into our Carbon MultiProcessing thread <br>
+(or &quot;MP thread&quot; for short, which will be the term used for it hereafter), <br>
+which may not be accessible or safe to initialize from our thread. <br>
+We then create the MP thread passing in the initialized<!--invalid font number 1-->
+<font size="2"> MyMPTaskInfo<!--invalid font number 0-->
+<span style="font-size:13pt"> <br>
+structure. <br>
+<br>
+Most of the interesting work is done in the small<!--invalid font number 1-->
+<font size="2"> MyMPTask()<!--invalid font number 0-->
+<span style="font-size:13pt"> routine on <br>
+an MP thread. Here we define the events we are interested in watching, <br>
+open file descriptors to the directories we are watching, <br>
+and block on the call to<!--invalid font number 1-->
+<font size="2"> kevent()<!--invalid font number 0-->
+<span style="font-size:13pt">. If any of the defined events occurs <br>
+to one of the file descriptors that we have opened, <br>
+the call to<!--invalid font number 1-->
+<font size="2"> kevent()<!--invalid font number 0-->
+<span style="font-size:13pt"> then unblocks, and we then post the <br>
+information back to the main event queue for display. <br>
+The routine<!--invalid font number 1-->
+<font size="2"> PostKQueueEvent()<!--invalid font number 0-->
+<span style="font-size:13pt"> is responsible for setting up our <br>
+custom CarbonEvent and posting it to the main event queue. <br>
+After the event is posted, we block on our call to<!--invalid font number 1-->
+<font size="2"> kevent()<!--invalid font number 0-->
+<span style="font-size:13pt"> again until <br>
+another event is received.<br>
+<br>
+<b>When should the kqueue mechanism be used?</b><br>
+<br>
+This solution is ideal for watching drop boxes, <br>
+or maintaining up-to-date status of a number of directories. <br>
+For instance, if your application presents views similar to the Finder views, <br>
+rather than polling for changes to each viewed directory, <br>
+you should consider a kqueue notification mechanism instead. <br>
+<br>
+<b>There are limitations to be aware of:</b><br>
+<br>
+Because a file descriptor must be opened for each file and folder <br>
+that is being watched it is not efficient or possible to use this mechanism <br>
+to watch all changes occurring to an entire disk. <br>
+<br>
+If the folder that you are watching is on an NFS server, <br>
+you will NOT be notified of changes by other network users. <br>
+However, SMB and AFP do support a &quot;push&quot; model of notifications. <br>
+<br>
+kqueues may not be supported by all file systems. <br>
+<br>
+The fsevents API is generally preferred on newer versions of OS X, <br>
+although kqueues may still be useful for portability, or in cases where finer <br>
+granularity is needed. <br>
+<br>
+<b>More kqueue information: <br>
+</b></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font><font color="#000000"><br>
+</font><!--invalid font number 2-->
+<font color="#000000">Typing &quot;<!--invalid font number 1-->
+<font size="2">man 2 kqueue<!--invalid font number 2-->
+<span style="font-size:13pt">&quot; in the Terminal will display the kqueue man page. <br>
+<br>
+Either click the &quot;?&quot; button from the FileNotification sample application <br>
+to read the enclosed &quot;kqueue.pdf&quot; file, or open the file manually, <br>
+for more in-depth information on kqueues. <br>
+</span></font></font></body>
+</html>
